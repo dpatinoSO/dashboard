@@ -30,6 +30,7 @@
 						<t t-name="kanban-box">
 							<div class="o_kanban_view o_kanban_ungrouped o_kanban_record own">
 								<div class="row col-xs-12">
+									
 									<button id="refresh"
 										class="btn btn-default btn-setting pull-right btn-dadhboard">
 										<i class="fa fa-refresh"></i>
@@ -38,7 +39,7 @@
 									<button name="action_setting" type="object"
 										groups="dashboard.dashboard_manager" class="btn btn-default btn-setting pull-right ">
 										<i class="fa fa-cog"></i>
-										customize
+										Activa el Dashboard aqui
 									</button>
 								</div>
 								<div class="row col-xs-12">

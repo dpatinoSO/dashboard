@@ -9,7 +9,7 @@
 				class="oe_form_configuration" name="dashboard_settingsm">
 				<header>
 					<button name="%(dashboard_action_view)d" type="action"
-						string="Dashboard" class="btn btn-default fa fa-cog"/>
+						string="Volver al Dashboard" class="btn btn-default fa fa-cog"/>
 					<button name="create_fields_dashboard" string="Crear Campos Predeterminados" type="object" class="oe_highlight"/>
 				</header>
 				<sheet>

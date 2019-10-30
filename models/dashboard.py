@@ -79,6 +79,16 @@ class Dashboard(models.Model):
         action['res_id'] = setting
         return action
     
+    @api.one
+    def create_fields_dashboard(self):
+
+        dashboard=self.env['dashboard.settings'].search([],limit=1,order='id desc')
+
+        dashboard.create_fields_dashboard()
+
+
+        return True
+    
     
     
     @api.multi
