@@ -2,6 +2,8 @@ from openerp import models, fields, api
 import datetime
 
 
+    
+
 class Dashboard(models.Model):
     _name = 'dashboard.dashboard'
     

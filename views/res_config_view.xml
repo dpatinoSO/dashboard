@@ -10,6 +10,7 @@
 				<header>
 					<button name="%(dashboard_action_view)d" type="action"
 						string="Dashboard" class="btn btn-default fa fa-cog"/>
+					<button name="create_fields_dashboard" string="Crear Campos Predeterminados" type="object" class="oe_highlight"/>
 				</header>
 				<sheet>
 					<separator string="Fields"/>

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <openerp>
 	<data>
+		<!--
+		<record model="ir.ui.view" id="rappi_010_form_id">
+				<field name="name">Configuracion Commpania</field>
+				<field name="model">res.company</field>
+				<field name="inherit_id" ref="base.view_company_form" />
+				<field name="arch" type="xml">
+					
+					<xpath expr="//header" position="inside">
+						<button name="create_fields_dashboard" string="Crear Campos" type="object" class="oe_highlight"/>
+					</xpath> 
+
+					
+					
+				</field>
+		</record>
+		-->
+
 		<record model="ir.ui.view" id="dashboard_kanban_view">
 			<field name="name">Dashboard</field>
 			<field name="model">dashboard.dashboard</field>

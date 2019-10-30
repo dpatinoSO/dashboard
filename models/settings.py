@@ -2,6 +2,83 @@ from openerp import models, fields, api
 
 class DashboardSettings(models.Model):
     _name = 'dashboard.settings'
+
+    @api.one
+    def create_fields_dashboard(self):
+        partner_id=self.env['ir.model'].search([("name","=","Partner")]).id
+        line_id_1={
+            'name': 'Numero Clientes',
+            'model_id': partner_id,
+            'type':'qty',
+            'field_id':self.env['ir.model.fields'].search([("model_id","=",partner_id),("name","=","id")]).id,
+            'filter':'customer',
+            'color':'red',
+            'icon':'fa-address-book',
+            'display':True,
+            'dashboard_id':self.id,
+        }
+        self.env['dashboard.settings.line'].create(line_id_1)
+
+
+        invoice_id=self.env['ir.model'].search([("name","=","Invoice")]).id
+        line_id_2={
+            'name': 'Ventas Totales',
+            'model_id': invoice_id,
+            'type':'money',
+            'field_id':self.env['ir.model.fields'].search([("model_id","=",invoice_id),("name","=","amount_total")]).id,
+            'filter':"type='out_invoice'",
+            'color':'green',
+            'icon':'fa-money',
+            'display':True,
+            'dashboard_id':self.id,
+        }
+        self.env['dashboard.settings.line'].create(line_id_2)
+
+        line_id_3={
+            'name': 'Compras Totales',
+            'model_id': invoice_id,
+            'type':'money',
+            'field_id':self.env['ir.model.fields'].search([("model_id","=",invoice_id),("name","=","amount_total")]).id,
+            'filter':"type='in_invoice'",
+            'color':'red',
+            'icon':'fa-credit-card-alt',
+            'display':True,
+            'dashboard_id':self.id,
+        }
+        self.env['dashboard.settings.line'].create(line_id_3)
+
+        sales_id=self.env['ir.model'].search([("name","=","Sales Order")]).id
+        chart_line_1={
+            'sequence': 1,
+            'display_type':'area',
+            'name': 'Ordenes de Compra',
+            'chart_model_id': sales_id,
+            'type':'money',
+            'chart_measure_field_id':self.env['ir.model.fields'].search([("model_id","=",sales_id),("name","=","amount_total")]).id,
+            'chart_date_field_id':self.env['ir.model.fields'].search([("model_id","=",sales_id),("name","=","date_order")]).id,
+            'filter':'' ,
+            'display':True,
+            'dashboard_id':self.id,
+        }
+        self.env['dashboard.settings.chart'].create(chart_line_1)
+
+        invoice_id=self.env['ir.model'].search([("name","=","Invoice")]).id
+        chart_line_2={
+            'sequence': 2,
+            'display_type':'bar',
+            'name': 'Facturacion',
+            'chart_model_id': invoice_id,
+            'type':'money',
+            'chart_measure_field_id':self.env['ir.model.fields'].search([("model_id","=",invoice_id),("name","=","amount_total")]).id,
+            'chart_date_field_id':self.env['ir.model.fields'].search([("model_id","=",invoice_id),("name","=","date_invoice")]).id,
+            'filter':"type='out_invoice'" ,
+            'display':True,
+            'dashboard_id':self.id,
+        }
+        self.env['dashboard.settings.chart'].create(chart_line_2)
+        
+
+        return True
     
     
     def get_default_chart_model(self):
